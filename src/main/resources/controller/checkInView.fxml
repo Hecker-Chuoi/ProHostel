@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane prefHeight="769.0" prefWidth="1271.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.CheckInController">
+   <children>
+      <ScrollPane layoutX="88.0" layoutY="146.0" prefHeight="622.0" prefWidth="1090.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="80.0" AnchorPane.rightAnchor="80.0">
+         <content>
+            <TableView fx:id="roomListingTable" prefHeight="620.0" prefWidth="1108.0">
+              <columns>
+                <TableColumn fx:id="ordinalColumn" prefWidth="48.00003129243851" text="STT" />
+                <TableColumn fx:id="idColumn" prefWidth="100.0" text="Mã phòng" />
+                  <TableColumn fx:id="areaColumn" prefWidth="100.0" text="Khu vực" />
+                  <TableColumn fx:id="roomTypeColumn" prefWidth="100.0" text="Loại phòng" />
+                  <TableColumn fx:id="capacityColumn" prefWidth="100.0" text="Sức chứa" />
+                  <TableColumn fx:id="rankColumn" prefWidth="100.0" text="Hạng phòng" />
+                  <TableColumn fx:id="priceColumn" prefWidth="128.79998779296875" text="Giá phòng">
+                     <columns>
+                        <TableColumn fx:id="pricePerHour" prefWidth="100.0" text="Theo giờ" />
+                        <TableColumn fx:id="pricePerHour" prefWidth="100.0" text="Theo ngày" />
+                     </columns>
+                  </TableColumn>
+                  <TableColumn fx:id="descriptionColumn" minWidth="4.00006103515625" prefWidth="295.99993896484375" text="Mô tả" />
+                  <TableColumn fx:id="selectColumn" minWidth="3.2000732421875" prefWidth="62.400146484375" text="Chọn" />
+              </columns>
+            </TableView>
+         </content>
+      </ScrollPane>
+      <GridPane layoutX="80.0" layoutY="18.0" prefHeight="78.0" prefWidth="324.0">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="95.199951171875" minWidth="10.0" prefWidth="30.0" />
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="155.9999938964844" minWidth="10.0" prefWidth="96.79999999999998" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="175.2" minWidth="10.0" prefWidth="175.2" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <Label prefHeight="18.0" prefWidth="30.0" text="Từ:" />
+            <TextField fx:id="fromTime" alignment="CENTER" prefHeight="26.0" prefWidth="126.0" promptText="hh : mm" GridPane.columnIndex="1" />
+            <TextField fx:id="toTime" alignment="CENTER" promptText="hh : mm" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <DatePicker fx:id="fromDate" promptText="Pick a date" GridPane.columnIndex="2" />
+            <DatePicker fx:id="toDate" promptText="Pick a date" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+            <Label prefWidth="30.0" text="Đến:" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
+         </children>
+      </GridPane>
+      <ComboBox fx:id="roomRankFilter" layoutX="603.0" layoutY="21.0" prefWidth="150.0" promptText="All" />
+      <Label layoutX="518.0" layoutY="25.0" text="Hạng phòng" />
+      <ChoiceBox fx:id="viewOption" layoutX="159.0" layoutY="103.0" prefWidth="150.0" />
+      <Label layoutX="80.0" layoutY="107.0" text="Chế độ xem" />
+      <Label layoutX="518.0" layoutY="71.0" text="Loại phòng" />
+      <ComboBox fx:id="roomTypeFilter" layoutX="603.0" layoutY="67.0" prefWidth="150.0" promptText="All" />
+      <Button fx:id="roomReceivingButton" layoutX="1083.0" layoutY="86.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="108.0" text="Nhận phòng">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Button>
+      <Button fx:id="filterResetButton" layoutX="815.0" layoutY="67.0" mnemonicParsing="false" prefWidth="60.0" text="Reset" />
+      <Button fx:id="filterApplyButton" layoutX="815.0" layoutY="30.0" mnemonicParsing="false" prefWidth="60.0" text="Apply" />
+   </children>
+</AnchorPane>

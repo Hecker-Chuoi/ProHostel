@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.FlowPane?>
+<?import javafx.scene.layout.VBox?>
+
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="820.0" prefWidth="1300.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+   <center>
+      <ScrollPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+         <content>
+            <TabPane prefHeight="798.0" prefWidth="1271.0" tabClosingPolicy="UNAVAILABLE">
+              <tabs>
+                  <Tab text="Tổng quan">
+                      <content>
+                          <fx:include fx:id="overviewPage" source="overview.fxml"/>
+                      </content>
+                  </Tab>
+                  <Tab text="Check in">
+                      <content>
+                          <fx:include fx:id="checkInPage" source="checkInView.fxml"/>
+                      </content>
+                  </Tab>
+                  <Tab text="Check out">
+                      <content>
+                          <fx:include fx:id="checkOutPage" source="checkOutView.fxml"/>
+                      </content>
+                  </Tab>
+                  <Tab text="Thêm phòng">
+                      <content>
+                          <fx:include fx:id="roomAddingPage" source="roomAddingView.fxml"/>
+                      </content>
+                  </Tab>
+                  <Tab text="Khách hàng">
+                      <content>
+                          <fx:include fx:id="customerListPage" source="customerListView.fxml"/>
+                      </content>
+                  </Tab>
+                  <Tab text="Nhân sự">
+                      <content>
+                          <fx:include fx:id="staffListPage" source="staffListView.fxml"/>
+                      </content>
+                  </Tab>
+                  <Tab text="Thống kê">
+                      <content>
+                          <fx:include fx:id="fooTabPage" source="analysisView.fxml"/>
+                      </content>
+                  </Tab>
+              </tabs>
+            </TabPane>
+         </content>
+      </ScrollPane>
+   </center>
+   <bottom>
+      <FlowPane prefHeight="19.0" prefWidth="600.0" BorderPane.alignment="CENTER" />
+   </bottom>
+   <left>
+      <VBox prefHeight="801.0" prefWidth="27.0" BorderPane.alignment="CENTER" />
+   </left>
+</BorderPane>

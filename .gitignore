@@ -15,6 +15,7 @@ target/
 mvnw
 *.xml
 *.cmd
+*.log
 
 ### Eclipse ###
 .apt_generated

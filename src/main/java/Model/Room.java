@@ -1,47 +1,49 @@
 package Model;
 
-import javafx.util.Pair;
-import java.util.Date;
-
-class Day{
-    private Date date;
-    private boolean booked;
-    private Pair<Boolean, Customer> hoursPerDay;
-
-    public Date getDate() {
-        return date;
-    }
-
-    public void setDate(Date date) {
-        this.date = date;
-    }
-
-    public boolean isBooked() {
-        return booked;
-    }
-
-    public void setBooked(boolean booked) {
-        this.booked = booked;
-    }
-
-    public Pair<Boolean, Customer> getHoursPerDay() {
-        return hoursPerDay;
-    }
-
-    public void setHoursPerDay(Pair<Boolean, Customer> hoursPerDay) {
-        this.hoursPerDay = hoursPerDay;
-    }
-}
-
-public class Room extends RoomType{
+public class Room{
     private String area;
-    private Day[] bookedInfo;
+    private int floor;
+    private int number;
+    private RoomType type;
+    private String id;
 
-    public Day[] getBookedInfo() {
-        return bookedInfo;
+    public String getArea() {
+        return area;
     }
 
-    public void setBookedInfo(Day[] bookedInfo) {
-        this.bookedInfo = bookedInfo;
+    public void setArea(String area) {
+        this.area = area;
+    }
+
+    public int getFloor() {
+        return floor;
+    }
+
+    public void setFloor(int floor) {
+        this.floor = floor;
+    }
+
+    public int getNumber() {
+        return number;
+    }
+
+    public void setNumber(int number) {
+        this.number = number;
+    }
+
+    public RoomType getType() {
+        return type;
+    }
+
+    public void setType(RoomType type) {
+        this.type = type;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 }

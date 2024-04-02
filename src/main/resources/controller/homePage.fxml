@@ -3,11 +3,9 @@
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
-<?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.FlowPane?>
 <?import javafx.scene.layout.VBox?>
-
 
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="820.0" prefWidth="1300.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
    <center>
@@ -17,37 +15,42 @@
               <tabs>
                   <Tab text="Tổng quan">
                       <content>
-                          <fx:include fx:id="overviewPage" source="overview.fxml"/>
+                          <fx:include fx:id="overviewPage" source="overview.fxml" />
                       </content>
                   </Tab>
-                  <Tab text="Check in">
+                  <Tab text="Đặt phòng">
                       <content>
-                          <fx:include fx:id="checkInPage" source="checkInView.fxml"/>
+                          <fx:include fx:id="checkInPage" source="checkInView.fxml" />
                       </content>
                   </Tab>
-                  <Tab text="Check out">
+                  <Tab text="Trả phòng">
                       <content>
-                          <fx:include fx:id="checkOutPage" source="checkOutView.fxml"/>
+                          <fx:include fx:id="checkOutPage" source="checkOutView.fxml" />
                       </content>
                   </Tab>
-                  <Tab text="Thêm phòng">
+                  <Tab text="QL phòng">
                       <content>
-                          <fx:include fx:id="roomAddingPage" source="roomAddingView.fxml"/>
+                          <fx:include fx:id="roomManagementPage" source="roomManagement.fxml" />
                       </content>
                   </Tab>
-                  <Tab text="Khách hàng">
+                  <Tab text="QL loại phòng">
                       <content>
-                          <fx:include fx:id="customerListPage" source="customerListView.fxml"/>
+                          <fx:include fx:id="roomTypeManagement" source="roomTypeManagement.fxml" />
                       </content>
                   </Tab>
-                  <Tab text="Nhân sự">
+                  <Tab text="DS hóa đơn">
                       <content>
-                          <fx:include fx:id="staffListPage" source="staffListView.fxml"/>
+                          <fx:include fx:id="customerListPage" source="customerListView.fxml" />
+                      </content>
+                  </Tab>
+                  <Tab text="QL nhân sự">
+                      <content>
+                          <fx:include fx:id="staffListPage" source="staffListView.fxml" />
                       </content>
                   </Tab>
                   <Tab text="Thống kê">
                       <content>
-                          <fx:include fx:id="fooTabPage" source="analysisView.fxml"/>
+                          <fx:include fx:id="fooTabPage" source="analysisView.fxml" />
                       </content>
                   </Tab>
               </tabs>

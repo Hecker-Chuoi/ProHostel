@@ -15,7 +15,6 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane prefHeight="769.0" prefWidth="1271.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.CheckInController">
    <children>
       <ScrollPane layoutX="88.0" layoutY="146.0" prefHeight="622.0" prefWidth="1090.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="80.0" AnchorPane.rightAnchor="80.0">
@@ -31,7 +30,7 @@
                   <TableColumn fx:id="priceColumn" prefWidth="128.79998779296875" text="Giá phòng">
                      <columns>
                         <TableColumn fx:id="pricePerHour" prefWidth="100.0" text="Theo giờ" />
-                        <TableColumn fx:id="pricePerHour" prefWidth="100.0" text="Theo ngày" />
+                        <TableColumn fx:id="pricePerDay" prefWidth="100.0" text="Theo ngày" />
                      </columns>
                   </TableColumn>
                   <TableColumn fx:id="descriptionColumn" minWidth="4.00006103515625" prefWidth="295.99993896484375" text="Mô tả" />
@@ -40,16 +39,21 @@
             </TableView>
          </content>
       </ScrollPane>
-      <GridPane layoutX="80.0" layoutY="18.0" prefHeight="78.0" prefWidth="324.0">
-        <columnConstraints>
-          <ColumnConstraints hgrow="SOMETIMES" maxWidth="95.199951171875" minWidth="10.0" prefWidth="30.0" />
-          <ColumnConstraints hgrow="SOMETIMES" maxWidth="155.9999938964844" minWidth="10.0" prefWidth="96.79999999999998" />
+      <Button fx:id="roomReceivingButton" layoutX="1083.0" layoutY="86.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="108.0" text="Nhận phòng">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Button>
+      <GridPane layoutX="90.0" layoutY="28.0" prefHeight="78.0" prefWidth="324.0">
+         <columnConstraints>
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="95.199951171875" minWidth="10.0" prefWidth="30.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="155.9999938964844" minWidth="10.0" prefWidth="96.79999999999998" />
             <ColumnConstraints hgrow="SOMETIMES" maxWidth="175.2" minWidth="10.0" prefWidth="175.2" />
-        </columnConstraints>
-        <rowConstraints>
-          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-        </rowConstraints>
+         </columnConstraints>
+         <rowConstraints>
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+         </rowConstraints>
          <children>
             <Label prefHeight="18.0" prefWidth="30.0" text="Từ:" />
             <TextField fx:id="fromTime" alignment="CENTER" prefHeight="26.0" prefWidth="126.0" promptText="hh : mm" GridPane.columnIndex="1" />
@@ -59,18 +63,13 @@
             <Label prefWidth="30.0" text="Đến:" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
          </children>
       </GridPane>
-      <ComboBox fx:id="roomRankFilter" layoutX="603.0" layoutY="21.0" prefWidth="150.0" promptText="All" />
-      <Label layoutX="518.0" layoutY="25.0" text="Hạng phòng" />
-      <ChoiceBox fx:id="viewOption" layoutX="159.0" layoutY="103.0" prefWidth="150.0" />
-      <Label layoutX="80.0" layoutY="107.0" text="Chế độ xem" />
-      <Label layoutX="518.0" layoutY="71.0" text="Loại phòng" />
-      <ComboBox fx:id="roomTypeFilter" layoutX="603.0" layoutY="67.0" prefWidth="150.0" promptText="All" />
-      <Button fx:id="roomReceivingButton" layoutX="1083.0" layoutY="86.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="108.0" text="Nhận phòng">
-         <font>
-            <Font name="System Bold" size="14.0" />
-         </font>
-      </Button>
-      <Button fx:id="filterResetButton" layoutX="815.0" layoutY="67.0" mnemonicParsing="false" prefWidth="60.0" text="Reset" />
-      <Button fx:id="filterApplyButton" layoutX="815.0" layoutY="30.0" mnemonicParsing="false" prefWidth="60.0" text="Apply" />
+      <ComboBox fx:id="roomRankFilter" layoutX="613.0" layoutY="31.0" prefWidth="150.0" promptText="All" />
+      <Label layoutX="528.0" layoutY="35.0" text="Hạng phòng" />
+      <ChoiceBox fx:id="viewOption" layoutX="169.0" layoutY="113.0" prefWidth="150.0" />
+      <Label layoutX="90.0" layoutY="117.0" text="Chế độ xem" />
+      <Label layoutX="528.0" layoutY="81.0" text="Loại phòng" />
+      <ComboBox fx:id="roomTypeFilter" layoutX="613.0" layoutY="77.0" prefWidth="150.0" promptText="All" />
+      <Button fx:id="filterResetButton" layoutX="825.0" layoutY="77.0" mnemonicParsing="false" prefWidth="60.0" text="Reset" />
+      <Button fx:id="filterApplyButton" layoutX="825.0" layoutY="40.0" mnemonicParsing="false" prefWidth="60.0" text="Apply" />
    </children>
 </AnchorPane>

@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.TitledPane?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="798.0" prefWidth="1271.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <TextField alignment="CENTER" layoutX="621.0" layoutY="26.0" prefHeight="26.0" prefWidth="319.0" text="Tìm kiếm" AnchorPane.leftAnchor="621.0" AnchorPane.rightAnchor="331.0" />
+      <GridPane hgap="5.0" layoutX="72.0" layoutY="23.0" prefHeight="33.0" prefWidth="271.0" AnchorPane.leftAnchor="60.0">
+         <columnConstraints>
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="107.99999389648437" minWidth="10.0" prefWidth="59.999975585937506" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="155.9999938964844" minWidth="10.0" prefWidth="60.999975585937506" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="216.8000061035156" minWidth="10.0" prefWidth="152.20002441406254" />
+         </columnConstraints>
+         <rowConstraints>
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+         </rowConstraints>
+         <children>
+            <Label prefHeight="18.0" prefWidth="65.0" text="Thời gian:" />
+            <TextField fx:id="fromTime" alignment="CENTER" prefHeight="26.0" prefWidth="80.0" promptText="hh : mm" GridPane.columnIndex="1" />
+            <DatePicker fx:id="fromDate" promptText="Pick a date" GridPane.columnIndex="2" />
+         </children>
+      </GridPane>
+      <Button fx:id="filterResetButton" layoutX="1151.0" layoutY="72.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="60.0" text="Reset" AnchorPane.rightAnchor="60.0" />
+      <Button fx:id="filterApplyButton" layoutX="1082.0" layoutY="72.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="60.0" text="Apply" AnchorPane.rightAnchor="129.0" />
+      <VBox layoutX="14.0" layoutY="75.0" prefHeight="663.0" prefWidth="271.0" AnchorPane.leftAnchor="60.0">
+         <children>
+            <TitledPane animated="false" text="Trạng thái">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+              </content>
+            </TitledPane>
+            <TitledPane animated="false" text="Loại phòng">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+              </content>
+            </TitledPane>
+            <TitledPane animated="false" text="Dọn dẹp">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+              </content>
+            </TitledPane>
+         </children>
+      </VBox>
+      <AnchorPane layoutX="329.0" layoutY="120.0" maxHeight="1.7976931348623157E308" prefHeight="650.0" prefWidth="861.0" AnchorPane.leftAnchor="350.0" AnchorPane.rightAnchor="60.0" AnchorPane.topAnchor="120.0" />
+      <ComboBox layoutX="355.0" layoutY="75.0" prefWidth="150.0" promptText="Chế độ xem" AnchorPane.leftAnchor="350.0" />
+      <Button layoutX="1131.0" layoutY="21.0" mnemonicParsing="false" text="Thêm +" textAlignment="CENTER">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font>
+      </Button>
+   </children>
+</AnchorPane>

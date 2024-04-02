@@ -39,11 +39,9 @@ public class Main extends Application {
         Image icon = new Image(String.valueOf(Main.class.getResource("/Image/appIcon.png")));
         stage.getIcons().add(icon);
         FXMLLoader loader = new FXMLLoader(Main.class.getResource("LoginView.fxml"));
-//        stage.setScene(new Scene(loader.load()));
-//        stage.show();
-
-        loader.setLocation(Main.class.getResource("homePage.fxml"));
         stage.setScene(new Scene(loader.load()));
+        stage.centerOnScreen();
         stage.show();
+
     }
 }

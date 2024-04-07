@@ -11,22 +11,27 @@
    <children>
       <TableView fx:id="tableView" layoutX="100.0" layoutY="108.0" prefHeight="658.0" prefWidth="1071.0" AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="100.0">
         <columns>
-          <TableColumn prefWidth="130.0" text="Mã loại phòng" />
-          <TableColumn prefWidth="300.0" text="Tên loại phòng" />
-            <TableColumn minWidth="2.4000244140625" prefWidth="120.0" text="Số giường" />
-            <TableColumn minWidth="0.0" prefWidth="120.0" text="Sức chứa" />
-            <TableColumn prefWidth="126.4000244140625" text="Giá">
+          <TableColumn fx:id="idColumn" prefWidth="130.0" text="Mã loại phòng" />
+          <TableColumn fx:id="nameColumn" prefWidth="300.0" text="Tên loại phòng" />
+            <TableColumn fx:id="numberOfBedColumn" minWidth="2.4000244140625" prefWidth="120.0" text="Số giường" />
+            <TableColumn fx:id="maxCapacityColumn" minWidth="0.0" prefWidth="120.0" text="Sức chứa" />
+            <TableColumn fx:id="priceColumn" prefWidth="126.4000244140625" text="Giá">
                <columns>
-                  <TableColumn prefWidth="150.0" text="Theo giờ" />
-                  <TableColumn prefWidth="150.0" text="Theo ngày" />
+                  <TableColumn fx:id="pricePerHour" prefWidth="150.0" text="Theo giờ" />
+                  <TableColumn fx:id="pricePerDay" prefWidth="150.0" text="Theo ngày" />
                </columns>
             </TableColumn>
-            <TableColumn prefWidth="50.0" text="Sửa" />
-            <TableColumn prefWidth="50.0" text="Xóa" />
+            <TableColumn fx:id="fixColumn" prefWidth="50.0" text="Sửa" />
+            <TableColumn fx:id="deleteColumn" prefWidth="50.0" text="Xóa" />
         </columns>
       </TableView>
       <TextField fx:id="searchField" alignment="CENTER" layoutX="476.0" layoutY="30.0" prefHeight="26.0" prefWidth="319.0" promptText="Tìm kiếm" AnchorPane.leftAnchor="476.0" AnchorPane.rightAnchor="476.0" />
-      <Button fx:id="addRoomType" layoutX="1091.0" layoutY="56.0" mnemonicParsing="false" onAction="#onAddRoomTypeButtonClicked" text="Thêm +" textAlignment="CENTER">
+      <Button fx:id="addRoomType" layoutX="1091.0" layoutY="56.0" mnemonicParsing="false" onAction="#onAddRoomTypeButtonClicked" prefWidth="80.0" text="Thêm +" textAlignment="CENTER">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font>
+      </Button>
+      <Button fx:id="saveButton" layoutX="1002.0" layoutY="55.0" mnemonicParsing="false" onAction="#onSaveButtonClicked" prefHeight="37.0" prefWidth="80.0" text="Lưu" textAlignment="CENTER">
          <font>
             <Font name="System Bold" size="16.0" />
          </font>

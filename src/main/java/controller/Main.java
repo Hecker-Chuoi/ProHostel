@@ -15,21 +15,25 @@ import java.util.List;
 import java.util.Optional;
 
 public class Main extends Application {
-    private List<Staff> staffList;
-    private List<Customer> customerList;
-    private List<RoomType> roomTypeList;
-    private List<Room> roomList;
+    public static List<Staff> staffList;
+    public static List<Customer> customerList;
+    public static List<RoomType> roomTypeList;
+    public static List<Room> roomList;
 
-    public Main() throws IOException {
-        List<Staff> staffList = new ArrayList<>();
-        List<Customer> customerList = new ArrayList<>();
-        List<RoomType> roomTypeList = new ArrayList<>();
-        List<Room> roomList = new ArrayList<>();
+    public static LoadFromDB loadFromDB;
+    public static WriteIntoDB writeIntoDB;
 
-        LoadFromDB loadFromDB = new LoadFromDB();
+    public static void main(String[] args) throws IOException {
+        staffList = new ArrayList<>();
+        customerList = new ArrayList<>();
+        roomTypeList = new ArrayList<>();
+        roomList = new ArrayList<>();
 
-    }
-    public static void main(String[] args) {
+        loadFromDB = new LoadFromDB();
+        writeIntoDB = new WriteIntoDB();
+
+        loadFromDB.inputRoomTypeList();
+        loadFromDB.inputRoomList();
         launch(args);
     }
 

@@ -20,18 +20,28 @@ import java.net.URL;
 import java.util.Optional;
 import java.util.ResourceBundle;
 
-public class LoginController{
+public class LoginController implements Initializable{
     @FXML
-    TextField username;
+    TextField username = new TextField();
     @FXML
-    TextField password;
+    TextField password = new TextField();
     @FXML
-    Button loginButton;
+    Button loginButton = new Button();
 
     private void initComponent(){
         username.clear();
         password.clear();
-        //loginButton.setDisable(true);
+        loginButton.setDisable(true);
+
+        username.textProperty().addListener((observable, oldValue, newValue) -> {
+            loginButton.setDisable(newValue.trim().isEmpty() || password.getText().trim().isEmpty());
+        });
+
+        password.textProperty().addListener((observable, oldValue, newValue) -> {
+            loginButton.setDisable(newValue.trim().isEmpty() || username.getText().trim().isEmpty());
+        });
+
+        Platform.runLater(() -> username.requestFocus());
     }
 
     private void wrongPasswordAlert(){
@@ -44,16 +54,11 @@ public class LoginController{
         initComponent();
     }
 
-    public void onPasswordType(){
-
-    }
-
     public void onLoginButtonClicked(ActionEvent event) throws IOException {
         String usernameInput = username.getText();
         String passwordInput = password.getText();
 
-        LoadFromDB loadFromDB = new LoadFromDB();
-        if(loadFromDB.isAccountTypedExists(usernameInput, passwordInput)){
+        if(Main.loadFromDB.isAccountTypedExists(usernameInput, passwordInput)){
             FXMLLoader loader = new FXMLLoader(getClass().getResource("homePage.fxml"));
             Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
             stage.setScene(new Scene(loader.load()));
@@ -63,5 +68,10 @@ public class LoginController{
             wrongPasswordAlert();
             initComponent();
         }
+    }
+
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        initComponent();
     }
 }

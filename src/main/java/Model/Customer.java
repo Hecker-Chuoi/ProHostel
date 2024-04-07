@@ -1,17 +1,19 @@
 package Model;
 
 import java.awt.*;
+import java.time.LocalDate;
 import java.util.Date;
 
 public class Customer {
     private String fullName;
-    private String gender;
-    private String authenID;
-    private String dob;
+    private String citizenId;
+    private LocalDate dateOfBirth;
     private String phoneNumber;
-    private String email;
+    private String address;
     private String nationality;
-    private Date checkInDate;
+    private String gender;
+
+    public Customer(){}
 
     public String getFullName() {
         return fullName;
@@ -21,28 +23,20 @@ public class Customer {
         this.fullName = fullName;
     }
 
-    public String getGender() {
-        return gender;
+    public String getCitizenId() {
+        return citizenId;
     }
 
-    public void setGender(String gender) {
-        this.gender = gender;
+    public void setCitizenId(String citizenId) {
+        this.citizenId = citizenId;
     }
 
-    public String getAuthenID() {
-        return authenID;
+    public LocalDate getDateOfBirth() {
+        return dateOfBirth;
     }
 
-    public void setAuthenID(String authenID) {
-        this.authenID = authenID;
-    }
-
-    public String getDob() {
-        return dob;
-    }
-
-    public void setDob(String dob) {
-        this.dob = dob;
+    public void setDateOfBirth(LocalDate dateOfBirth) {
+        this.dateOfBirth = dateOfBirth;
     }
 
     public String getPhoneNumber() {
@@ -53,12 +47,20 @@ public class Customer {
         this.phoneNumber = phoneNumber;
     }
 
-    public String getEmail() {
-        return email;
+    public String getAddress() {
+        return address;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public String getGender() {
+        return gender;
+    }
+
+    public void setGender(String gender) {
+        this.gender = gender;
     }
 
     public String getNationality() {

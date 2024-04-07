@@ -1,5 +1,7 @@
 package Model;
 
+import javafx.beans.property.Property;
+
 public class RoomType {
     private String name;
     private String id;
@@ -18,8 +20,12 @@ public class RoomType {
         this.numberOfBed = numberOfBed;
         this.maxPeople = maxPeople;
     }
-
     public RoomType(){}
+
+    @Override
+    public String toString() {
+        return name + "\n" + id + " " + numberOfBed + " " + maxPeople + " " + pricePerHour + " " + pricePerDay;
+    }
 
     public String getName() {
         return name;
@@ -76,4 +82,5 @@ public class RoomType {
     public void setMaxPeople(int maxPeople) {
         this.maxPeople = maxPeople;
     }
+
 }

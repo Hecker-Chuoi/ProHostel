@@ -4,14 +4,12 @@
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
 <?import javafx.scene.layout.BorderPane?>
-<?import javafx.scene.layout.FlowPane?>
-<?import javafx.scene.layout.VBox?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="820.0" prefWidth="1300.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="820.0" prefWidth="1273.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
    <center>
       <ScrollPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <content>
-            <TabPane prefHeight="798.0" prefWidth="1271.0" tabClosingPolicy="UNAVAILABLE">
+            <TabPane prefHeight="818.0" prefWidth="1271.0" tabClosingPolicy="UNAVAILABLE">
               <tabs>
                   <Tab text="Tổng quan">
                       <content>
@@ -58,10 +56,4 @@
          </content>
       </ScrollPane>
    </center>
-   <bottom>
-      <FlowPane prefHeight="19.0" prefWidth="600.0" BorderPane.alignment="CENTER" />
-   </bottom>
-   <left>
-      <VBox prefHeight="801.0" prefWidth="27.0" BorderPane.alignment="CENTER" />
-   </left>
 </BorderPane>

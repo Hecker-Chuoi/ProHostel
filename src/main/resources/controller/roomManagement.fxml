@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.TitledPane?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="798.0" prefWidth="1271.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.roomManagementController">
+   <children>
+      <TextField fx:id="searchField" alignment="CENTER" layoutX="621.0" layoutY="26.0" prefHeight="26.0" prefWidth="319.0" promptText="Tìm kiếm" AnchorPane.leftAnchor="621.0" AnchorPane.rightAnchor="331.0" />
+      <GridPane hgap="5.0" layoutX="72.0" layoutY="23.0" prefHeight="33.0" prefWidth="270.0" AnchorPane.leftAnchor="60.0">
+         <columnConstraints>
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="107.99999389648437" minWidth="10.0" prefWidth="59.999975585937506" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="155.9999938964844" minWidth="10.0" prefWidth="60.999975585937506" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="216.8000061035156" minWidth="10.0" prefWidth="152.20002441406254" />
+         </columnConstraints>
+         <rowConstraints>
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+         </rowConstraints>
+         <children>
+            <Label prefHeight="18.0" prefWidth="65.0" text="Thời gian:" />
+            <TextField fx:id="fromTime" alignment="CENTER" prefHeight="26.0" prefWidth="80.0" promptText="hh : mm" GridPane.columnIndex="1" />
+            <DatePicker fx:id="fromDate" promptText="Pick a date" GridPane.columnIndex="2" />
+         </children>
+      </GridPane>
+      <Button fx:id="filterResetButton" layoutX="419.0" layoutY="24.0" mnemonicParsing="false" onAction="#onFilterResetButtonClicked" prefHeight="30.0" prefWidth="60.0" text="Reset" AnchorPane.rightAnchor="792.0" AnchorPane.topAnchor="24.0" />
+      <Button fx:id="filterApplyButton" layoutX="350.0" layoutY="24.0" mnemonicParsing="false" onAction="#onFilterApplyButtonClicked" prefHeight="30.0" prefWidth="60.0" text="Apply" AnchorPane.leftAnchor="350.0" AnchorPane.rightAnchor="861.0" AnchorPane.topAnchor="24.0" />
+      <AnchorPane layoutX="60.0" layoutY="75.0" AnchorPane.leftAnchor="60.0">
+         <children>
+            <VBox prefHeight="663.0" prefWidth="270.0">
+               <children>
+                  <TitledPane animated="false" text="Trạng thái">
+                     <content>
+                        <ScrollPane hbarPolicy="NEVER" minHeight="200.0" prefHeight="200.0" prefWidth="270.0">
+                           <content>
+                              <VBox prefHeight="200.0" prefWidth="270.0" />
+                           </content>
+                        </ScrollPane>
+                     </content>
+                  </TitledPane>
+                  <TitledPane animated="false" text="Loại phòng">
+                     <content>
+                        <ScrollPane hbarPolicy="NEVER" minHeight="200.0" prefHeight="200.0" prefWidth="270.0">
+                           <content>
+                              <VBox minHeight="200.0" prefHeight="200.0" prefWidth="270.0" />
+                           </content>
+                        </ScrollPane>
+                     </content>
+                  </TitledPane>
+                  <TitledPane animated="false" text="Dọn dẹp">
+                     <content>
+                        <ScrollPane hbarPolicy="NEVER" minHeight="200.0" prefHeight="200.0" prefWidth="270.0">
+                           <content>
+                              <VBox prefHeight="200.0" prefWidth="270.0" />
+                           </content>
+                        </ScrollPane>
+                     </content>
+                  </TitledPane>
+               </children>
+            </VBox>
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="anchorPane" layoutX="350.0" layoutY="133.0" maxHeight="1.7976931348623157E308" prefHeight="650.0" prefWidth="861.0" AnchorPane.leftAnchor="350.0" AnchorPane.rightAnchor="60.0" AnchorPane.topAnchor="125.0" />
+      <Button fx:id="addRoomButton" layoutX="1131.0" layoutY="21.0" mnemonicParsing="false" onAction="#onAddRoomButtonClicked" text="Thêm +" textAlignment="CENTER" AnchorPane.rightAnchor="60.799999999999955" AnchorPane.topAnchor="26.0">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font>
+      </Button>
+      <Button fx:id="saveButton" layoutX="1041.0" layoutY="21.0" mnemonicParsing="false" onAction="#onSaveButtonClicked" prefHeight="37.0" prefWidth="79.0" text="Lưu" textAlignment="CENTER" AnchorPane.topAnchor="26.0">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font>
+      </Button>
+      <Label layoutX="350.0" layoutY="67.0" text="Chế độ xem" AnchorPane.leftAnchor="350.0" />
+      <ChoiceBox fx:id="viewOption" layoutX="350.0" layoutY="85.0" prefWidth="150.0" AnchorPane.leftAnchor="350.0" />
+      <Button fx:id="refresh" layoutX="1155.0" layoutY="85.0" mnemonicParsing="false" onAction="#refreshData" text="Refresh" />
+   </children>
+</AnchorPane>

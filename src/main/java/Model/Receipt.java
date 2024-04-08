@@ -71,10 +71,6 @@ public class Receipt {
             this.roomId = room.getId();
         }
 
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm dd/MM/yyyy");
-        this.fromTimeString = formatter.format(fromTime);
-        this.toTimeString = formatter.format(toTime);
-
         if(fromTime == null || toTime == null){
             this.day = 0;
             this.hour = 0;
@@ -82,6 +78,9 @@ public class Receipt {
         else{
             this.day = (int) fromTime.until(toTime, ChronoUnit.DAYS);
             this.hour = (int) fromTime.until(toTime, ChronoUnit.HOURS) % 24;
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm dd/MM/yyyy");
+            this.fromTimeString = formatter.format(fromTime);
+            this.toTimeString = formatter.format(toTime);
         }
         this.total = day * room.getType().getPricePerDay() + hour * room.getType().getPricePerHour();
     }

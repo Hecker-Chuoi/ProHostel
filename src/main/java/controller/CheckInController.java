@@ -15,6 +15,7 @@ import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.util.Callback;
 import javafx.util.StringConverter;
 
+import java.io.IOException;
 import java.net.URL;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -215,7 +216,7 @@ public class CheckInController implements Initializable {
         roomTypeFilter.setItems(roomTypeStringList);
         roomTypeFilter.setValue("All");
     }
-    public void onRoomReceivingButtonClicked(){
+    public void onRoomReceivingButtonClicked() throws IOException {
         boolean isCustomerExist = false;
         for(Customer customer : Main.customerList){
             if(customer.getCitizenId().equals(newCustomer.getCitizenId())){
@@ -225,6 +226,7 @@ public class CheckInController implements Initializable {
         }
         if(!isCustomerExist){
             Main.customerList.add(newCustomer);
+            Main.writeIntoDB.writeCustomerList();
         }
 
         for(Room room : pickedRooms){

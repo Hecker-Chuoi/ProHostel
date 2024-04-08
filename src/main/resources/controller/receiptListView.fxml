@@ -15,7 +15,7 @@
 <AnchorPane prefHeight="798.0" prefWidth="1271.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ReceiptListViewController">
    <children>
       <TextField fx:id="searchField" alignment="CENTER" layoutX="476.0" layoutY="26.0" prefHeight="26.0" prefWidth="319.0" promptText="Tìm kiếm" AnchorPane.leftAnchor="476.0" AnchorPane.rightAnchor="476.0" />
-      <GridPane hgap="5.0" layoutX="72.0" layoutY="23.0" prefHeight="33.0" prefWidth="270.0" AnchorPane.leftAnchor="60.0" AnchorPane.rightAnchor="940.0">
+      <GridPane hgap="5.0" layoutX="100.0" layoutY="22.0" prefHeight="33.0" prefWidth="270.0" AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="900.0">
          <columnConstraints>
             <ColumnConstraints hgrow="SOMETIMES" maxWidth="107.99999389648437" minWidth="10.0" prefWidth="59.999975585937506" />
             <ColumnConstraints hgrow="SOMETIMES" maxWidth="155.9999938964844" minWidth="10.0" prefWidth="60.999975585937506" />
@@ -51,7 +51,7 @@
             </TableView>
          </children></AnchorPane>
       <Button fx:id="refresh" layoutX="1155.0" layoutY="85.0" mnemonicParsing="false" onAction="#onRefreshButtonClicked" text="Refresh" AnchorPane.rightAnchor="100.0" />
-      <Label layoutX="60.0" layoutY="67.0" text="Loại phòng: " />
-      <ComboBox fx:id="roomTypeFilter" layoutX="127.0" layoutY="62.0" onAction="#onRoomTypeFilterApply" prefHeight="26.0" prefWidth="202.0" AnchorPane.rightAnchor="940.0" />
+      <Label layoutX="100.0" layoutY="67.0" text="Loại phòng: " />
+      <ComboBox fx:id="roomTypeFilter" layoutX="169.0" layoutY="62.0" onAction="#onRoomTypeFilterApply" prefHeight="26.0" prefWidth="202.0" AnchorPane.rightAnchor="899.6" />
    </children>
 </AnchorPane>

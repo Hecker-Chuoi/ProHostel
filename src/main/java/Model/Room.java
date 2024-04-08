@@ -40,7 +40,6 @@ public class Room{
                 break;
             }
         }
-
         init();
     }
 

@@ -21,7 +21,7 @@
 
 <AnchorPane prefHeight="769.0" prefWidth="1271.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.CheckInController">
    <children>
-      <Button fx:id="roomReceivingButton" layoutX="1103.0" layoutY="85.0" mnemonicParsing="false" onAction="#onRoomReceivingButtonClicked" prefHeight="34.0" prefWidth="108.0" text="Nhận phòng">
+      <Button fx:id="roomReceivingButton" layoutX="1103.0" layoutY="26.0" mnemonicParsing="false" onAction="#onRoomReceivingButtonClicked" prefHeight="34.0" prefWidth="108.0" text="Nhận phòng">
          <font>
             <Font name="System Bold" size="14.0" />
          </font>
@@ -203,8 +203,8 @@
                                   <TableColumn fx:id="floorCol" prefWidth="125.0" text="Tầng" />
                                     <TableColumn fx:id="roomNumberCol" prefWidth="125.0" text="Số phòng" />
                                     <TableColumn fx:id="roomTypeCol" prefWidth="150.0" text="Loại phòng" />
-                                    <TableColumn fx:id="pricePerHourCol" prefWidth="102.0" text="Giá theo giờ" />
-                                    <TableColumn fx:id="pricePerDayCol" prefWidth="102.0" text="Giá theo ngày" />
+                                    <TableColumn fx:id="numberOfBedCol" prefWidth="102.0" text="Số giường" />
+                                    <TableColumn fx:id="maxCapacityCol" prefWidth="102.0" text="Sức chứa" />
                                     <TableColumn fx:id="addCol" prefWidth="50.0" text="Thêm" />
                                 </columns>
                               </TableView>
@@ -250,5 +250,6 @@
             <Font name="System Bold" size="18.0" />
          </font>
       </Label>
+      <Button fx:id="refresh" layoutX="1155.0" layoutY="121.0" mnemonicParsing="false" onAction="#refreshDataTable" text="Refresh" />
    </children>
 </AnchorPane>

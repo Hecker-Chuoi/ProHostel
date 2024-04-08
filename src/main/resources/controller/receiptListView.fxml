@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+
+<AnchorPane prefHeight="798.0" prefWidth="1271.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ReceiptListViewController">
+   <children>
+      <TextField fx:id="searchField" alignment="CENTER" layoutX="476.0" layoutY="26.0" prefHeight="26.0" prefWidth="319.0" promptText="Tìm kiếm" AnchorPane.leftAnchor="476.0" AnchorPane.rightAnchor="476.0" />
+      <GridPane hgap="5.0" layoutX="72.0" layoutY="23.0" prefHeight="33.0" prefWidth="270.0" AnchorPane.leftAnchor="60.0" AnchorPane.rightAnchor="940.0">
+         <columnConstraints>
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="107.99999389648437" minWidth="10.0" prefWidth="59.999975585937506" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="155.9999938964844" minWidth="10.0" prefWidth="60.999975585937506" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="216.8000061035156" minWidth="10.0" prefWidth="152.20002441406254" />
+         </columnConstraints>
+         <rowConstraints>
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+         </rowConstraints>
+         <children>
+            <Label prefHeight="18.0" prefWidth="65.0" text="Thời gian:" />
+            <TextField fx:id="fromTime" alignment="CENTER" prefHeight="26.0" prefWidth="80.0" promptText="hh : mm" GridPane.columnIndex="1" />
+            <DatePicker fx:id="fromDate" promptText="Pick a date" GridPane.columnIndex="2" />
+         </children>
+      </GridPane>
+      <AnchorPane layoutX="60.0" layoutY="75.0" AnchorPane.leftAnchor="60.0" />
+      <AnchorPane fx:id="anchorPane" layoutX="350.0" layoutY="133.0" maxHeight="1.7976931348623157E308" prefHeight="650.0" prefWidth="861.0" AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="100.0" AnchorPane.topAnchor="125.0">
+         <children>
+            <TableView fx:id="tableView" layoutX="14.0" layoutY="92.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+              <columns>
+                <TableColumn fx:id="idCol" prefWidth="150.0" text="Mã hóa đơn" />
+                <TableColumn fx:id="customerNameCol" prefWidth="150.0" text="Tên khách hàng" />
+                  <TableColumn fx:id="roomIdCol" minWidth="0.0" prefWidth="125.0" text="Mã phòng" />
+                  <TableColumn fx:id="numOfPeopleCol" minWidth="0.0" prefWidth="125.0" text="Số người ở" />
+                  <TableColumn prefWidth="74.39996337890625" text="Thời gian">
+                     <columns>
+                        <TableColumn fx:id="fromTimeCol" prefWidth="175.0" text="Từ" />
+                        <TableColumn fx:id="toTimeCol" prefWidth="175.0" text="Đến" />
+                     </columns>
+                  </TableColumn>
+                  <TableColumn fx:id="totalCol" prefWidth="118.0" text="Tổng chi phí" />
+                  <TableColumn fx:id="delCol" prefWidth="50.0" text="Xóa" />
+              </columns>
+            </TableView>
+         </children></AnchorPane>
+      <Button fx:id="refresh" layoutX="1155.0" layoutY="85.0" mnemonicParsing="false" onAction="#onRefreshButtonClicked" text="Refresh" AnchorPane.rightAnchor="100.0" />
+      <Label layoutX="60.0" layoutY="67.0" text="Loại phòng: " />
+      <ComboBox fx:id="roomTypeFilter" layoutX="127.0" layoutY="62.0" onAction="#onRoomTypeFilterApply" prefHeight="26.0" prefWidth="202.0" AnchorPane.rightAnchor="940.0" />
+   </children>
+</AnchorPane>

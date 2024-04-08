@@ -19,6 +19,22 @@ public class Customer {
         return fullName;
     }
 
+    public Customer(String s){
+        String[] arr = s.split("\n");
+        this.fullName = arr[0];
+        this.citizenId = arr[1];
+        this.dateOfBirth = LocalDate.parse(arr[2]);
+        this.phoneNumber = arr[3];
+        this.address = arr[4];
+        this.nationality = arr[5];
+        this.gender = arr[6];
+    }
+
+    @Override
+    public String toString() {
+        return fullName + "\n" + citizenId + "\n" + dateOfBirth + "\n" + phoneNumber + "\n" + address + "\n" + nationality + "\n" + gender;
+    }
+
     public void setFullName(String fullName) {
         this.fullName = fullName;
     }

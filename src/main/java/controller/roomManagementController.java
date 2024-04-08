@@ -32,6 +32,8 @@ public class roomManagementController implements Initializable {
     AnchorPane anchorPane;
     @FXML
     ChoiceBox<String> viewOption;
+    @FXML
+    Button refresh;
 
     FXMLLoader roomViewLoader;
 
@@ -42,6 +44,16 @@ public class roomManagementController implements Initializable {
     public void onFilterResetButtonClicked(){
 
     }
+    public void refreshData(){
+        roomViewLoader = new FXMLLoader(getClass().getResource("displayRoomListAsTable.fxml"));
+        try {
+            anchorPane.getChildren().clear();
+            anchorPane.getChildren().add(roomViewLoader.load());
+        }
+        catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 
     public void onSaveButtonClicked() throws IOException {
         Main.roomList.clear();
@@ -49,8 +61,8 @@ public class roomManagementController implements Initializable {
         Main.writeIntoDB.writeRoomList();
     }
 
-    private String defaultId(String floor, String number){
-        return "P" + floor + String.format("%02d", Integer.parseInt(number));
+    private String defaultId(int floor, int number){
+        return "P" + floor + String.format("%02d", number);
     }
 
     public void onAddRoomButtonClicked() throws IOException {
@@ -76,13 +88,13 @@ public class roomManagementController implements Initializable {
         floor.textProperty().addListener((observable, oldValue, newValue) -> {
             submitButton.setDisable(newValue.trim().isEmpty() || id.getText().trim().isEmpty() || number.getText().trim().isEmpty() || type.getValue() == null);
             if(!newValue.trim().isEmpty() && !number.getText().trim().isEmpty()){
-                id.setText(defaultId(newValue.trim(), number.getText().trim()));
+                id.setText(defaultId(Integer.parseInt(newValue.trim()), Integer.parseInt(number.getText().trim())));
             }
         });
         number.textProperty().addListener((observable, oldValue, newValue) -> {
             submitButton.setDisable(newValue.trim().isEmpty() || floor.getText().trim().isEmpty() || number.getText().trim().isEmpty() || type.getValue() == null);
             if(!newValue.trim().isEmpty() && !floor.getText().trim().isEmpty()){
-                id.setText(defaultId(newValue.trim(), floor.getText().trim()));
+                id.setText(defaultId(Integer.parseInt(floor.getText().trim()), Integer.parseInt(newValue.trim())));
             }
         });
         type.valueProperty().addListener((observable, oldValue, newValue) -> {
@@ -104,6 +116,7 @@ public class roomManagementController implements Initializable {
                         break;
                     }
                 }
+                room.init();
                 return room;
             }
             return null;

@@ -22,7 +22,7 @@
                </columns>
             </TableColumn>
             <TableColumn fx:id="fixColumn" prefWidth="50.0" text="Sửa" />
-            <TableColumn fx:id="deleteColumn" prefWidth="50.0" text="Xóa" />
+            <TableColumn fx:id="delColumn" prefWidth="50.0" text="Xóa" />
         </columns>
       </TableView>
       <TextField fx:id="searchField" alignment="CENTER" layoutX="476.0" layoutY="30.0" prefHeight="26.0" prefWidth="319.0" promptText="Tìm kiếm" AnchorPane.leftAnchor="476.0" AnchorPane.rightAnchor="476.0" />

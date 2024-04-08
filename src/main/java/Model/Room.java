@@ -6,34 +6,28 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Date;
 
-enum Status{
-    AVAILABLE, OCCUPIED, RESERVED;
-}
-
 public class Room{
     private int floor;
     private int number;
     private RoomType type;
     private String typeString;
     private String id;
-    private double pricePerHour;
-    private double pricePerDay;
+    private int numberOfBed;
+    private int maxPeople;
 
     private Status status;
     private String statusString;;
     private Customer customer;
     private String customerString;
-    private int numberOfPeople;
+    private String numberOfPeople;
 
     private LocalDateTime startTime;
     private LocalDateTime endTime;
     private String startTimeString;
     private String endTimeString;
 
-
     public Room(){
         init();
-
     }
     public Room(String s){
         String[] arr = s.split(" ");
@@ -48,26 +42,31 @@ public class Room{
         }
 
         init();
-        typeString = type.getName();
-        pricePerHour = type.getPricePerHour();
-        pricePerDay = type.getPricePerDay();
     }
 
     public void init(){
         status = Status.AVAILABLE;
         statusString = String.valueOf(status);
 
-        numberOfPeople = 0;
+        numberOfPeople = "0";
         customer = null;
         customerString = "";
-
-        pricePerHour = 0;
-        pricePerDay = 0;
 
         startTime = null;
         endTime = null;
         startTimeString = "";
         endTimeString = "";
+
+        if(type == null){
+            typeString = "";
+            numberOfBed = 0;
+            maxPeople = 0;
+        }
+        else {
+            typeString = type.getName();
+            numberOfBed = type.getNumberOfBed();
+            maxPeople = type.getMaxPeople();
+        }
     }
 
     @Override
@@ -126,41 +125,28 @@ public class Room{
         this.customerString = customer.getFullName();
     }
 
-    public int getNumberOfPeople() {
+    public String getNumberOfPeople() {
         return numberOfPeople;
     }
 
-    public void setNumberOfPeople(int numberOfPeople) {
+    public void setNumberOfPeople(String numberOfPeople) {
         this.numberOfPeople = numberOfPeople;
+    }
+
+    public int getNumberOfBed() {
+        return numberOfBed;
+    }
+
+    public int getMaxPeople() {
+        return maxPeople;
     }
 
     public String getStatusString() {
         return statusString;
     }
 
-    public void setStatusString(String statusString) {
-        this.statusString = statusString;
-    }
-
     public String getTypeString() {
         return typeString;
-    }
-
-    public void setTypeString(String typeString) {
-        this.typeString = typeString;
-    }
-
-    public double getPricePerHour() {
-        return pricePerHour;
-    }
-    public void setPricePerHour(double pricePerHour) {
-        this.pricePerHour = pricePerHour;
-    }
-    public double getPricePerDay() {
-        return pricePerDay;
-    }
-    public void setPricePerDay(double pricePerDay) {
-        this.pricePerDay = pricePerDay;
     }
 
     public String getCustomerString() {

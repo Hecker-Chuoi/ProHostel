@@ -11,21 +11,21 @@
          <content>
             <TabPane prefHeight="818.0" prefWidth="1271.0" tabClosingPolicy="UNAVAILABLE">
               <tabs>
-                  <Tab text="Tổng quan">
-                      <content>
-                          <fx:include fx:id="overviewPage" source="overview.fxml" />
-                      </content>
-                  </Tab>
+<!--                  <Tab text="Tổng quan">-->
+<!--                      <content>-->
+<!--                          <fx:include fx:id="overviewPage" source="overview.fxml" />-->
+<!--                      </content>-->
+<!--                  </Tab>-->
                   <Tab text="Đặt phòng">
                       <content>
                           <fx:include fx:id="checkInPage" source="checkInView.fxml" />
                       </content>
                   </Tab>
-                  <Tab text="Trả phòng">
-                      <content>
-                          <fx:include fx:id="checkOutPage" source="checkOutView.fxml" />
-                      </content>
-                  </Tab>
+<!--                  <Tab text="Trả phòng">-->
+<!--                      <content>-->
+<!--                          <fx:include fx:id="checkOutPage" source="checkOutView.fxml" />-->
+<!--                      </content>-->
+<!--                  </Tab>-->
                   <Tab text="QL phòng">
                       <content>
                           <fx:include fx:id="roomManagementPage" source="roomManagement.fxml" />
@@ -38,19 +38,19 @@
                   </Tab>
                   <Tab text="DS hóa đơn">
                       <content>
-                          <fx:include fx:id="customerListPage" source="customerListView.fxml" />
+                          <fx:include fx:id="receiptListView" source="receiptListView.fxml" />
                       </content>
                   </Tab>
-                  <Tab text="QL nhân sự">
-                      <content>
-                          <fx:include fx:id="staffListPage" source="staffListView.fxml" />
-                      </content>
-                  </Tab>
-                  <Tab text="Thống kê">
-                      <content>
-                          <fx:include fx:id="fooTabPage" source="analysisView.fxml" />
-                      </content>
-                  </Tab>
+<!--                  <Tab text="QL nhân sự">-->
+<!--                      <content>-->
+<!--                          <fx:include fx:id="staffListPage" source="staffListView.fxml" />-->
+<!--                      </content>-->
+<!--                  </Tab>-->
+<!--                  <Tab text="Thống kê">-->
+<!--                      <content>-->
+<!--                          <fx:include fx:id="fooTabPage" source="analysisView.fxml" />-->
+<!--                      </content>-->
+<!--                  </Tab>-->
               </tabs>
             </TabPane>
          </content>

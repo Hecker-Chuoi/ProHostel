@@ -62,7 +62,7 @@ public class LoginController implements Initializable{
             FXMLLoader loader = new FXMLLoader(getClass().getResource("homePage.fxml"));
             Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
             stage.setScene(new Scene(loader.load()));
-            stage.setX(10); stage.setY(10);
+            stage.centerOnScreen();
             stage.show();
         } else {
             wrongPasswordAlert();

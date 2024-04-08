@@ -3,12 +3,15 @@ package controller;
 import Model.Customer;
 import Model.Room;
 import Model.RoomType;
+import Model.Status;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.util.Callback;
 import javafx.util.StringConverter;
 
@@ -30,6 +33,8 @@ public class CheckInController implements Initializable {
     DatePicker toDate;
     @FXML
     ComboBox<String> roomTypeFilter;
+    @FXML
+    Button roomReceivingButton;
     @FXML
     TextField name;
     @FXML
@@ -57,15 +62,15 @@ public class CheckInController implements Initializable {
     @FXML
     TableColumn<Room, String> roomTypeCol;
     @FXML
-    TableColumn<Room, Double> pricePerHourCol;
+    TableColumn<Room, Integer> numberOfBedCol;
     @FXML
-    TableColumn<Room, Double> pricePerDayCol;
+    TableColumn<Room, Integer> maxCapacityCol;
     @FXML
     TableColumn<Room, String> addCol;
     @FXML
     TableColumn<Room, String> idCol2;
     @FXML
-    TableColumn<Room, Integer> customerNumCol;
+    TableColumn<Room, String> customerNumCol;
     @FXML
     TableColumn<Room, String> customerCol;
     @FXML
@@ -74,6 +79,8 @@ public class CheckInController implements Initializable {
     TableColumn<Room, String> finishTimeCol;
     @FXML
     TableColumn<Room, String> delColumn;
+    @FXML
+    Button refresh;
 
     Customer newCustomer;
     ObservableList<String> roomTypeStringList;
@@ -114,6 +121,7 @@ public class CheckInController implements Initializable {
         }
         roomTypeStringList.add("All");
         roomTypeFilter.setItems(roomTypeStringList);
+        roomTypeFilter.setValue("All");
 
         formatDatePicker(dateOfBirth);
         formatDatePicker(fromDate);
@@ -136,6 +144,17 @@ public class CheckInController implements Initializable {
         });
         citizenId.textProperty().addListener((observable, oldValue, newValue) -> {
             newCustomer.setCitizenId(newValue.trim());
+            for(Customer customer : Main.customerList){
+                if(customer.getCitizenId().equals(newValue.trim())) {
+                    newCustomer = customer;
+                    name.setText(customer.getFullName());
+                    dateOfBirth.setValue(customer.getDateOfBirth());
+                    phoneNum.setText(customer.getPhoneNumber());
+                    address.setText(customer.getAddress());
+                    nationality.setText(customer.getNationality());
+                    gender.setValue(customer.getGender());
+                }
+            }
         });
         dateOfBirth.valueProperty().addListener((observable, oldValue, newValue) -> {
             newCustomer.setDateOfBirth(newValue);
@@ -170,25 +189,61 @@ public class CheckInController implements Initializable {
 
     public void onRoomTypeFilter() {
         String type = roomTypeFilter.getValue();
-        if(type.equals("All")){
+        if(type == null || type.equals("All")){
+            availableRooms.clear();
             for(Room room : Main.roomList){
                 if(room.getStatus().equals("AVAILABLE"))
                     availableRooms.add(room);
             }
         }
         else{
-            availableRooms.removeIf(room -> !room.getType().getName().equals(type));
+            availableRooms.clear();
+            for(Room room : Main.roomList){
+                if(room.getTypeString().equals(type) && room.getStatus().equals("AVAILABLE"))
+                    availableRooms.add(room);
+            }
         }
     }
-    public void onRoomReceivingButtonClicked(){
-        Room room = availableRoomsTable.getSelectionModel().getSelectedItem();
-        if(room != null){
-            pickedRooms.add(room);
-            availableRooms.remove(room);
+    public void refreshDataTable(){
+        initAvailableRoomsTable();
+        roomTypeStringList = FXCollections.observableArrayList();
+        roomTypeStringList.clear();
+        for(RoomType roomType : Main.roomTypeList){
+            roomTypeStringList.add(roomType.getName());
         }
+        roomTypeStringList.add("All");
+        roomTypeFilter.setItems(roomTypeStringList);
+        roomTypeFilter.setValue("All");
+    }
+    public void onRoomReceivingButtonClicked(){
+        boolean isCustomerExist = false;
+        for(Customer customer : Main.customerList){
+            if(customer.getCitizenId().equals(newCustomer.getCitizenId())){
+                isCustomerExist = true;
+                break;
+            }
+        }
+        if(!isCustomerExist){
+            Main.customerList.add(newCustomer);
+        }
+
+        for(Room room : pickedRooms){
+            room.setStatus(Status.OCCUPIED);
+            room.setCustomer(newCustomer);
+            room.setStartTime(LocalDateTime.of(fromDate.getValue(), LocalTime.parse(fromHour.getText())));
+            room.setEndTime(LocalDateTime.of(toDate.getValue(), LocalTime.parse(toHour.getText())));
+        }
+        pickedRooms.clear();
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Thông báo");
+        alert.setHeaderText("Nhận phòng thành công");
+        if(!isCustomerExist)
+            alert.setContentText("Đã thêm khách hàng vào cơ sở dữ liệu");
+        alert.showAndWait();
     }
 
     private void initAvailableRoomsTable() {
+        roomTypeFilter.setValue("All");
         availableRooms = FXCollections.observableArrayList(Main.roomList);
         availableRooms.removeIf(room -> !room.getStatus().equals("AVAILABLE"));
 
@@ -196,15 +251,15 @@ public class CheckInController implements Initializable {
         floorCol.setCellValueFactory(new PropertyValueFactory<>("floor"));
         roomNumberCol.setCellValueFactory(new PropertyValueFactory<>("number"));
         roomTypeCol.setCellValueFactory(new PropertyValueFactory<>("typeString"));
-        pricePerHourCol.setCellValueFactory(new PropertyValueFactory<Room, Double>("pricePerHour"));
-        pricePerDayCol.setCellValueFactory(new PropertyValueFactory<>("pricePerDay"));
+        numberOfBedCol.setCellValueFactory(new PropertyValueFactory<>("numberOfBed"));
+        maxCapacityCol.setCellValueFactory(new PropertyValueFactory<>("maxPeople"));
 
         idCol1.setStyle( "-fx-alignment: CENTER;");
         floorCol.setStyle( "-fx-alignment: CENTER;");
         roomNumberCol.setStyle( "-fx-alignment: CENTER;");
         roomTypeCol.setStyle( "-fx-alignment: CENTER;");
-        pricePerDayCol.setStyle( "-fx-alignment: CENTER;");
-        pricePerHourCol.setStyle( "-fx-alignment: CENTER;");
+        numberOfBedCol.setStyle( "-fx-alignment: CENTER;");
+        maxCapacityCol.setStyle( "-fx-alignment: CENTER;");
         addCol.setStyle( "-fx-alignment: CENTER;");
 
         Callback<TableColumn<Room, String>, TableCell<Room, String>> cellFactory
@@ -243,6 +298,7 @@ public class CheckInController implements Initializable {
         availableRoomsTable.setItems(availableRooms);
     }
     private void initPickedRoomsTable() {
+        pickedRoomsTable.setEditable(true);
         idCol2.setCellValueFactory(new PropertyValueFactory<>("id"));
         customerNumCol.setCellValueFactory(new PropertyValueFactory<>("numberOfPeople"));
         startTimeCol.setCellValueFactory(new PropertyValueFactory<>("startTimeString"));
@@ -255,6 +311,42 @@ public class CheckInController implements Initializable {
         finishTimeCol.setStyle( "-fx-alignment: CENTER;");
         customerCol.setStyle( "-fx-alignment: CENTER;");
         delColumn.setStyle( "-fx-alignment: CENTER;");
+
+        customerNumCol.setCellFactory(TextFieldTableCell.forTableColumn());
+        customerNumCol.setOnEditCommit(
+                new EventHandler<TableColumn.CellEditEvent<Room, String>>() {
+                    @Override
+                    public void handle(TableColumn.CellEditEvent<Room, String> t) {
+                        Room room = t.getTableView().getItems().get(t.getTablePosition().getRow());
+                        try {
+                            int num = Integer.parseInt(t.getNewValue());
+                            if(num > 0 && num <= room.getMaxPeople()){
+                                room.setNumberOfPeople(t.getNewValue().trim());
+                            }
+                            else {
+                                Alert alert = new Alert(Alert.AlertType.ERROR);
+                                alert.setTitle("Lỗi");
+                                alert.setHeaderText("Dữ liệu không hợp lệ");
+                                alert.setContentText("Số người đăng ký phải nằm trong khoảng từ 1 đến " + room.getMaxPeople() + " người");
+
+                                ButtonType cancel = new ButtonType("Thoát", ButtonBar.ButtonData.CANCEL_CLOSE);
+                                alert.getButtonTypes().setAll(cancel);
+                                alert.showAndWait();
+                            }
+                        }
+                        catch(NumberFormatException e) {
+                            Alert alert = new Alert(Alert.AlertType.ERROR);
+                            alert.setTitle("Lỗi");
+                            alert.setHeaderText("Dữ liệu không hợp lệ");
+                            alert.setContentText("Vui lòng nhập số người đăng ký hợp lệ");
+
+                            ButtonType cancel = new ButtonType("Thoát", ButtonBar.ButtonData.CANCEL_CLOSE);
+                            alert.getButtonTypes().setAll(cancel);
+                            alert.showAndWait();
+                        }
+                    }
+                }
+        );
 
         Callback<TableColumn<Room, String>, TableCell<Room, String>> cellFactory
             = new Callback<TableColumn<Room, String>, TableCell<Room, String>>() {

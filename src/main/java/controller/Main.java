@@ -19,6 +19,7 @@ public class Main extends Application {
     public static List<Customer> customerList;
     public static List<RoomType> roomTypeList;
     public static List<Room> roomList;
+    public static List<Receipt> receiptList;
 
     public static LoadFromDB loadFromDB;
     public static WriteIntoDB writeIntoDB;
@@ -28,12 +29,16 @@ public class Main extends Application {
         customerList = new ArrayList<>();
         roomTypeList = new ArrayList<>();
         roomList = new ArrayList<>();
+        receiptList = new ArrayList<>();
 
         loadFromDB = new LoadFromDB();
         writeIntoDB = new WriteIntoDB();
 
         loadFromDB.inputRoomTypeList();
         loadFromDB.inputRoomList();
+        loadFromDB.inputCustomerList();
+        loadFromDB.inputStaffList();
+        loadFromDB.inputReceiptList();
         launch(args);
     }
 
